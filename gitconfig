@@ -1,0 +1,9 @@
+[user]
+    email = danieln@selfnet.de
+    name = Daniel Naegele
+[push]
+    default = simple
+[alias]
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    grep = grep -Ii
