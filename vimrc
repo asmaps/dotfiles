@@ -69,7 +69,7 @@ hi CursorColumn cterm=NONE ctermbg=234
 hi CursorLineNr cterm=bold ctermfg=red
 hi LineNr ctermfg=blue
 
-"" highlight same words
+"" highlight same words, taken from https://github.com/adimit
 hi flicker cterm=bold ctermbg=234
 au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
 
