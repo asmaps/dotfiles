@@ -208,4 +208,5 @@ Bundle 'vim-scripts/taglist.vim'
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
 Bundle 'saltstack/salt-vim'
+Bundle 'christoomey/vim-tmux-navigator'
 "" }}}
