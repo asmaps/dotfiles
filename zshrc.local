@@ -1,4 +1,5 @@
 setopt vi
+bindkey '\e.' insert-last-word #alt . working in vim mode
 export TERM="screen-256color"
 
 # autostart tmux
