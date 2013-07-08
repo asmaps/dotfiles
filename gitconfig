@@ -1,6 +1,6 @@
 [user]
-    email = danieln@selfnet.de
-    name = Daniel Nägele
+	email = danieln@selfnet.de
+	name = Daniel Nägele
 [alias]
     ci = commit
     co = checkout
