@@ -93,6 +93,9 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " salt syntax highlighting
 au BufRead,BufNewFile *.sls set filetype=sls
+
+" arduino syntax highlightning
+au BufRead,BufNewFile *.ino set filetype=c
 "" }}}
 
 "####################################################################
