@@ -43,7 +43,8 @@ set smartindent
 set shiftwidth=4
 set softtabstop=4
 set expandtab " use spaces
-set textwidth=79
+set textwidth=0
+set wrapmargin=0
 
 "" search
 set smartcase
@@ -55,7 +56,7 @@ set showmatch
 " visual style {{{
 "####################################################################
 "" colorscheme
-colorscheme desert
+"colorscheme wombat256mod " set after the bundles at the end of this file!
 set background=dark
 set t_Co=256 " force more colors
 
@@ -81,7 +82,9 @@ set showcmd
 "" linenumbers
 set relativenumber
 set ruler
-autocmd InsertEnter * :setlocal nu
+set nu
+set rnu
+autocmd InsertEnter * :setlocal nu | setlocal nornu
 autocmd InsertLeave * :setlocal rnu
 "" }}}
 
@@ -181,4 +184,22 @@ Bundle 'vim-scripts/taglist.vim'
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
 Bundle 'saltstack/salt-vim'
+Bundle 'vim-scripts/wombat256.vim'
+colorscheme wombat256mod " needs to be after the bundle
+Bundle 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'filename', 'fugitive', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?"ᓯ ".fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ }
+      \ }
 "" }}}
