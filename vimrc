@@ -191,15 +191,20 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'filename', 'fugitive', 'modified' ] ]
+      \             [ 'filename', 'fugitive', 'modified' ]
+      \   ]
       \ },
       \ 'component': {
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?"ᓯ ".fugitive#head():""}'
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
       \ },
       \ 'component_visible_condition': {
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
       \ }
       \ }
+function! MyFugitive()
+    return exists('*fugitive#head') && strlen(fugitive#head()) ? 'ᓯ '.fugitive#head() : ''
+endfunction
 "" }}}
