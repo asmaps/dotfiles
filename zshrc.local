@@ -2,6 +2,10 @@ setopt vi
 bindkey '\e.' insert-last-word #alt . working in vim mode
 export TERM="screen-256color"
 
+if which apt-get 2>&1 >/dev/null; then
+    alias ack=ack-grep
+fi
+
 # autostart tmux
 if which tmux 2>&1 >/dev/null; then
     test -z "$TMUX" && (tmux attach || tmux new-session)

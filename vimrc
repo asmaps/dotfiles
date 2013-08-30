@@ -62,17 +62,7 @@ set t_Co=256 " force more colors
 
 "" highlight the current line and column
 set cul
-hi CursorLine cterm=NONE ctermbg=234
 set cuc
-hi CursorColumn cterm=NONE ctermbg=234
-
-"" coloring of linenumbers
-hi CursorLineNr cterm=bold ctermfg=red
-hi LineNr ctermfg=blue
-
-"" highlight same words, taken from https://github.com/adimit
-hi flicker cterm=bold ctermbg=234
-au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
 
 "" statusbar
 set cmdheight=2
@@ -82,10 +72,10 @@ set showcmd
 "" linenumbers
 set relativenumber
 set ruler
-set nu
-set rnu
-autocmd InsertEnter * :setlocal nu | setlocal nornu
-autocmd InsertLeave * :setlocal rnu
+" set number
+" set relativenumber
+" autocmd InsertEnter * :setlocal norelativenumber
+" autocmd InsertLeave * if flexnu | :setlocal relativenumber
 "" }}}
 
 "####################################################################
@@ -121,6 +111,9 @@ map Y y$
 " remove search hl
 nnoremap <silent><C-C> :nohl<CR>
 
+" nerdcommenter toggle
+nnoremap <silent><leader>c :nohl<CR>
+
 " NERDtree
 nnoremap <silent><leader>f :NERDTreeToggle<Cr>
 
@@ -130,6 +123,10 @@ nnoremap <silent><leader>t :TlistToggle<Cr>
 " toggle conversion of buffers to tabs
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+
+" toggle linenumber switching
+" let flexnu = 1
+" nnoremap <silent> <F9> :let flexnu=!flexnu<Bar>:if flexnu<Bar>:setlocal rnu<Bar>:else<Bar>:setlocal nornu<Bar>:endif<CR>
 
 " switch buffers
 nnoremap <silent><Tab> :bn<Cr>
@@ -179,7 +176,7 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/taglist.vim'
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
