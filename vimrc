@@ -72,10 +72,10 @@ set showcmd
 "" linenumbers
 set relativenumber
 set ruler
-" set number
-" set relativenumber
-" autocmd InsertEnter * :setlocal norelativenumber
-" autocmd InsertLeave * if flexnu | :setlocal relativenumber
+set number
+set relativenumber
+autocmd InsertEnter * :setlocal norelativenumber
+autocmd InsertLeave * if flexnu | :setlocal relativenumber
 "" }}}
 
 "####################################################################
@@ -125,8 +125,8 @@ let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
 " toggle linenumber switching
-" let flexnu = 1
-" nnoremap <silent> <F9> :let flexnu=!flexnu<Bar>:if flexnu<Bar>:setlocal rnu<Bar>:else<Bar>:setlocal nornu<Bar>:endif<CR>
+let flexnu = 1
+nnoremap <silent> <F9> :let flexnu=!flexnu<Bar>:if flexnu<Bar>:setlocal rnu<Bar>:else<Bar>:setlocal nornu<Bar>:endif<CR>
 
 " switch buffers
 nnoremap <silent><Tab> :bn<Cr>
