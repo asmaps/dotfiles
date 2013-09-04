@@ -2,6 +2,11 @@ setopt vi
 bindkey '\e.' insert-last-word #alt . working in vim mode
 export TERM="screen-256color"
 
+if [ -e "/usr/local/bin/virtualenvwrapper.sh" ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+export WORKON_HOME=~/.envs
+
 if which apt-get 2>&1 >/dev/null; then
     alias ack=ack-grep
 fi
