@@ -111,15 +111,6 @@ map Y y$
 " remove search hl
 nnoremap <silent><C-C> :nohl<CR>
 
-" nerdcommenter toggle
-nnoremap <silent><leader>c :nohl<CR>
-
-" NERDtree
-nnoremap <silent><leader>f :NERDTreeToggle<Cr>
-
-" taglist
-nnoremap <silent><leader>t :TlistToggle<Cr>
-
 " toggle conversion of buffers to tabs
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
@@ -169,6 +160,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+nnoremap <silent><leader>f :NERDTreeToggle<Cr>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
@@ -178,6 +170,7 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/taglist.vim'
+noremap <silent><leader>t :TlistToggle<Cr>
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
 Bundle 'saltstack/salt-vim'
@@ -204,4 +197,11 @@ let g:lightline = {
 function! MyFugitive()
     return exists('*fugitive#head') && strlen(fugitive#head()) ? 'ᓯ '.fugitive#head() : ''
 endfunction
+Bundle 'goldfeld/vim-seek'
+let g:seek_subst_disable = 1
+let g:seek_enable_jumps = 1
+let g:seek_enable_jumps_in_diff = 1
+Bundle 'davidhalter/jedi-vim'
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
 "" }}}
