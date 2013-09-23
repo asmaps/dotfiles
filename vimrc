@@ -204,4 +204,7 @@ let g:seek_enable_jumps_in_diff = 1
 Bundle 'davidhalter/jedi-vim'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
+Bundle 'airblade/vim-gitgutter'
+let g:gitgutter_enabled = 0
+noremap <silent><leader>g :GitGutterToggle<Cr>
 "" }}}
