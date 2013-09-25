@@ -202,6 +202,7 @@ let g:seek_subst_disable = 1
 let g:seek_enable_jumps = 1
 let g:seek_enable_jumps_in_diff = 1
 Bundle 'davidhalter/jedi-vim'
+let g:jedi#goto_assignments_command = ""
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 Bundle 'airblade/vim-gitgutter'
