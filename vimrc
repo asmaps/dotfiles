@@ -24,7 +24,6 @@ set backspace=indent,eol,start
 set hidden " change buffers without saving
 set mousehide " no mouse
 set wildmenu " menu when tab completing commands
-set nomodeline " ignore modelines
 set nostartofline " don't move the coursor to the beginning of the line
 set foldmethod=marker " fold by marker
 set scrolloff=11 " minimum lines to the screens end
@@ -208,4 +207,5 @@ let g:jedi#popup_on_dot = 0
 Bundle 'airblade/vim-gitgutter'
 let g:gitgutter_enabled = 0
 noremap <silent><leader>g :GitGutterToggle<Cr>
+Bundle 'ivyl/vim-bling'
 "" }}}
