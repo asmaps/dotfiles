@@ -175,27 +175,31 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 Bundle 'saltstack/salt-vim'
 Bundle 'vim-scripts/wombat256.vim'
 colorscheme wombat256mod " needs to be after the bundle
-Bundle 'itchyny/lightline.vim'
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'filename', 'fugitive', 'modified' ]
-      \   ]
-      \ },
-      \ 'component': {
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \ },
-      \ 'component_visible_condition': {
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
-      \ }
-      \ }
-function! MyFugitive()
-    return exists('*fugitive#head') && strlen(fugitive#head()) ? 'ᓯ '.fugitive#head() : ''
-endfunction
+" Bundle 'itchyny/lightline.vim'
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'filename', 'fugitive', 'modified' ]
+"       \   ]
+"       \ },
+"       \ 'component': {
+"       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+"       \ },
+"       \ 'component_function': {
+"       \   'fugitive': 'MyFugitive',
+"       \ },
+"       \ 'component_visible_condition': {
+"       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
+"       \ }
+"       \ }
+" function! MyFugitive()
+" return exists('*fugitive#head') && strlen(fugitive#head()) ? 'ᓯ '.fugitive#head() : ''
+" endfunction
+Bundle 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 Bundle 'goldfeld/vim-seek'
 let g:seek_subst_disable = 1
 let g:seek_enable_jumps = 1
