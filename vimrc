@@ -214,5 +214,4 @@ Bundle 'airblade/vim-gitgutter'
 let g:gitgutter_enabled = 0
 noremap <silent><leader>g :GitGutterToggle<Cr>
 Bundle 'ivyl/vim-bling'
-Bundle 'mileszs/ack.vim'
 "" }}}
