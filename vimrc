@@ -69,12 +69,9 @@ set laststatus=2
 set showcmd
 
 "" linenumbers
-set relativenumber
-set ruler
 set number
 set relativenumber
-autocmd InsertEnter * :setlocal nornu | :setlocal nu
-autocmd InsertLeave * if flexnu | :setlocal relativenumber
+set ruler
 "" }}}
 
 "####################################################################
@@ -113,10 +110,6 @@ nnoremap <silent><C-C> :nohl<CR>
 " toggle conversion of buffers to tabs
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
-
-" toggle linenumber switching
-let flexnu = 1
-nnoremap <silent> <F9> :let flexnu=!flexnu<Bar>:if flexnu<Bar>:setlocal rnu<Bar>:else<Bar>:setlocal nornu<bar>:setlocal nu<Bar>:endif<CR>
 
 " switch buffers
 nnoremap <silent><Tab> :bn<Cr>
@@ -160,6 +153,7 @@ endif
 "####################################################################
 " bundles and their options {{{
 "####################################################################
+Bundle 'myusuf3/numbers.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
@@ -180,27 +174,6 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 Bundle 'saltstack/salt-vim'
 Bundle 'vim-scripts/wombat256.vim'
 colorscheme wombat256mod " needs to be after the bundle
-" Bundle 'itchyny/lightline.vim'
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ 'active': {
-"       \   'left': [ [ 'mode', 'paste' ],
-"       \             [ 'filename', 'fugitive', 'modified' ]
-"       \   ]
-"       \ },
-"       \ 'component': {
-"       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
-"       \ },
-"       \ 'component_function': {
-"       \   'fugitive': 'MyFugitive',
-"       \ },
-"       \ 'component_visible_condition': {
-"       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
-"       \ }
-"       \ }
-" function! MyFugitive()
-" return exists('*fugitive#head') && strlen(fugitive#head()) ? 'ᓯ '.fugitive#head() : ''
-" endfunction
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep = ''
@@ -220,4 +193,6 @@ let g:gitgutter_enabled = 0
 noremap <silent><leader>g :GitGutterToggle<Cr>
 Bundle 'ivyl/vim-bling'
 Bundle 'mileszs/ack.vim'
+"Bundle 'Yggdroot/indentLine'
+"let g:indentLine_color_term = 239
 "" }}}
