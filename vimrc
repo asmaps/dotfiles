@@ -5,11 +5,6 @@
 set nocompatible " vi compatibility off
 scriptencoding utf-8
 
-"" Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
 "" filetype plugin and syntax
 syntax on
 filetype indent plugin on
@@ -137,7 +132,7 @@ if !filereadable(vundle_readme)
     echo ""
     silent !mkdir -p ~/.vim/bundle
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let installed_vundle=0
+    let installed_vundle=1
 endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -162,11 +157,10 @@ Bundle 'mileszs/ack.vim'
 "Bundle 'Yggdroot/indentLine' " good with my urxvt config: let g:indentLine_color_term = 239
 
 if installed_vundle == 1
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
     :BundleInstall
 endif
 "" }}}
+
 "####################################################################
 " bundle options {{{
 "####################################################################
