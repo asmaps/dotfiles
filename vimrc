@@ -129,35 +129,49 @@ cmap grep grep!
 " Credit to: https://github.com/erikzaadi
 "####################################################################
 
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
+" automatic installation of vundle on fresh deployments
+let installed_vundle=0
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
+    echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
+    let installed_vundle=0
 endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+" begin bundles
 Bundle 'gmarik/vundle'
-
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
-"" }}}
-
-"####################################################################
-" bundles and their options {{{
-"####################################################################
 Bundle 'myusuf3/numbers.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'saltstack/salt-vim'
+Bundle 'vim-scripts/wombat256.vim'
+Bundle 'bling/vim-airline'
+Bundle 'goldfeld/vim-seek'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'ivyl/vim-bling'
+Bundle 'mileszs/ack.vim'
+"Bundle 'Yggdroot/indentLine' " good with my urxvt config: let g:indentLine_color_term = 239
+
+if installed_vundle == 1
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
+"" }}}
+"####################################################################
+" bundle options {{{
+"####################################################################
+
+" NERDTree
 nnoremap <silent><leader>f :NERDTreeToggle<Cr>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -166,33 +180,34 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
-Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-scripts/taglist.vim'
+
+" Taglist
 noremap <silent><leader>t :TlistToggle<Cr>
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
-Bundle 'saltstack/salt-vim'
-Bundle 'vim-scripts/wombat256.vim'
-colorscheme wombat256mod " needs to be after the bundle
-Bundle 'bling/vim-airline'
+
+" Colorscheme from bundle (needs to come after its Bundle line)
+colorscheme wombat256mod
+
+" Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tabline#fnamecollapse = 0
 let g:airline_exclude_preview=1
-Bundle 'goldfeld/vim-seek'
+
+" Seek
 let g:seek_subst_disable = 1
 let g:seek_enable_jumps = 1
 let g:seek_enable_jumps_in_diff = 1
-Bundle 'davidhalter/jedi-vim'
+
+" Jedi
 let g:jedi#goto_assignments_command = ""
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
-Bundle 'airblade/vim-gitgutter'
+
+" GitGutter
 let g:gitgutter_enabled = 0
 noremap <silent><leader>g :GitGutterToggle<Cr>
-Bundle 'ivyl/vim-bling'
-Bundle 'mileszs/ack.vim'
-"Bundle 'Yggdroot/indentLine'
-"let g:indentLine_color_term = 239
+
 "" }}}
