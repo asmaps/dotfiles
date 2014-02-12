@@ -120,7 +120,7 @@ cmap grep grep!
 "" }}}
 
 "####################################################################
-" autoinstall vundle {{{
+" autoinstall vundle and bundles {{{
 " Credit to: https://github.com/erikzaadi
 "####################################################################
 
