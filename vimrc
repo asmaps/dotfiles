@@ -96,8 +96,18 @@ nnoremap k gk
 vnoremap < <gv
 vnoremap > >gv
 
+" replace dollar and acute
+nnoremap B ^
+nnoremap E $
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
 " change Y from yy to y$
 map Y y$
+
+" alternative esc
+inoremap jk <esc>
 
 " remove search hl
 nnoremap <silent><C-C> :nohl<CR>
@@ -154,6 +164,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ivyl/vim-bling'
 Bundle 'mileszs/ack.vim'
+Bundle 'sjl/gundo.vim'
 "Bundle 'Yggdroot/indentLine' " good with my urxvt config: let g:indentLine_color_term = 239
 
 if installed_vundle == 1
@@ -203,5 +214,8 @@ let g:jedi#popup_on_dot = 0
 " GitGutter
 let g:gitgutter_enabled = 0
 noremap <silent><leader>g :GitGutterToggle<Cr>
+
+" Gundo
+nnoremap <silent><leader>u :GundoToggle<Cr>
 
 "" }}}
