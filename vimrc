@@ -86,7 +86,12 @@ au BufRead,BufNewFile *.ino set filetype=c
 " keymaps {{{
 "####################################################################
 
-let mapleader = ","
+let mapleader = "\<Space>"
+
+" some easy ones
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :wq<CR>
 
 " jump to visual lines
 nnoremap j gj
@@ -165,6 +170,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'ivyl/vim-bling'
 Bundle 'mileszs/ack.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'terryma/vim-expand-region'
 "Bundle 'Yggdroot/indentLine' " good with my urxvt config: let g:indentLine_color_term = 239
 
 if installed_vundle == 1
@@ -215,7 +221,15 @@ let g:jedi#popup_on_dot = 0
 let g:gitgutter_enabled = 0
 noremap <silent><leader>g :GitGutterToggle<Cr>
 
+" crtl-p
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
+
 " Gundo
 nnoremap <silent><leader>u :GundoToggle<Cr>
+
+" expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 "" }}}
