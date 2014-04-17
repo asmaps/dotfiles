@@ -1,16 +1,13 @@
 [user]
-    email = danieln@selfnet.de
-    name = Daniel Nägele
+    email = git@as-webservices.de
+    name = Arne Schauf
 [alias]
     ci = commit
     co = checkout
-    a = add
-    p = pull --ff-only
-    s = status -sb
+    sup = log --all --graph --pretty=format:'%Cblue%h%C(yellow)%d %Creset%s %Cgreen(%cr) %Cred%an%+b'
     lv = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lg = log --graph --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     grep = grep -Ii
-    ready = rebase -i @{u}
 [push]
     default = current
 [color]
