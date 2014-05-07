@@ -6,6 +6,9 @@ if which apt-get 2>&1 >/dev/null; then
     if [ -e "/etc/bash_completion.d/virtualenvwrapper" ]; then
         source /etc/bash_completion.d/virtualenvwrapper
     fi
+    if [ -e "/usr/lib/rbenv/completions/rbenv.zsh" ]; then
+        source /usr/lib/rbenv/completions/rbenv.zsh
+    fi
 fi
 
 if which pacman 2>&1 >/dev/null; then
