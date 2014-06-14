@@ -77,12 +77,13 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 nnoremap <silent><Tab> :bn<Cr>
 nnoremap <silent><S-Tab> :bp<Cr>
 
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
 " save with sudo
 cmap w!! w !sudo tee %
-
-" never open first grep/ack hit
-cmap ack Ack!
-cmap grep grep!
 
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
@@ -105,41 +106,45 @@ if iCanHazVundle == 0
 endif
 
 Bundle 'myusuf3/numbers.vim'
+
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
+
 Bundle 'kien/ctrlp.vim'
+
 Bundle 'scrooloose/nerdtree'
-nnoremap <silent><leader>f :NERDTreeToggle<Cr>
-let NERDTreeShowBookmarks=1
+nnoremap <silent><C-n> :NERDTreeToggle<Cr>
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
+
 Bundle 'tomtom/tcomment_vim'
+
 Bundle 'vim-scripts/taglist.vim'
 noremap <silent><leader>t :TlistToggle<Cr>
+noremap <silent><C-T> :TlistToggle<Cr>
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
+
 Bundle 'saltstack/salt-vim'
+au BufRead,BufNewFile *.sls set filetype=sls
+
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#tabline#fnamecollapse = 0
-let g:airline_exclude_preview=1
-Bundle 'goldfeld/vim-seek'
-let g:seek_subst_disable = 1
-let g:seek_enable_jumps = 1
-let g:seek_enable_jumps_in_diff = 1
-Bundle 'davidhalter/jedi-vim'
-let g:jedi#goto_assignments_command = ""
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 1
-Bundle 'airblade/vim-gitgutter'
-let g:gitgutter_enabled = 0
-noremap <silent><leader>g :GitGutterToggle<Cr>
+set laststatus=2
+
+Bundle 'bling/vim-bufferline'
+
+" Bundle 'davidhalter/jedi-vim'
+" let g:jedi#use_tabs_not_buffers = 0
+
 Bundle 'ivyl/vim-bling'
-Bundle 'mileszs/ack.vim'
-au BufRead,BufNewFile *.sls set filetype=sls
+" Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'ervandew/supertab'
+Bundle 'rstacruz/sparkup'
+" Bundle 'scrooloose/syntastic'
+" Bundle 'vim-scripts/indentpython.vim'
+Bundle 'klen/python-mode'
+let g:pymode_folding = 0
+
+Bundle 'altercation/vim-colors-solarized'
+set background=dark
+colorscheme solarized

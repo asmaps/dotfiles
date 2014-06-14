@@ -23,8 +23,13 @@ if [ -e "/home/asmaps/.rvm/scripts/rvm" ]; then
 fi
 
 # autostart tmux
-if which tmux 2>&1 >/dev/null; then
-    test -z "$TMUX" && (tmux attach || tmux new-session)
+if [ "$TMUX" = "" ]; then
+    export TERM=xterm-256color
+    if which tmux 2>&1 >/dev/null; then
+        tmux attach || tmux new-session
+    fi
+else
+    export TERM=screen-256color
 fi
 
 if which xset 2>&1 >/dev/null; then
