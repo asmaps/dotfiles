@@ -55,6 +55,9 @@ set number
 
 let mapleader = ","
 
+" autoreload vimrc on save
+" autocmd BufWritePost .vimrc source %
+
 " jump to visual lines
 nnoremap j gj
 nnoremap k gk
@@ -67,7 +70,7 @@ vnoremap > >gv
 map Y y$
 
 " remove search hl
-nnoremap <silent><C-C> :nohl<CR>
+nnoremap <silent><C-c> :nohl<CR>
 
 " toggle conversion of buffers to tabs
 let notabs = 1
@@ -81,6 +84,8 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+nnoremap <silent><C-C> :nohl<CR>
 
 " save with sudo
 cmap w!! w !sudo tee %
@@ -149,6 +154,7 @@ let g:pymode_lint_on_fly = 1
 let g:pymode_lint_ignore = "E501,W0611,W0401,"
 let g:pymode_rope_autoimport_import_after_complete = 1
 let g:pymode_doc = 0
+set completeopt=menu
 
 Bundle 'tpope/vim-vividchalk'
 Bundle 'tomasr/molokai'
