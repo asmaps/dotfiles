@@ -80,11 +80,6 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 nnoremap <silent><Tab> :bn<Cr>
 nnoremap <silent><S-Tab> :bp<Cr>
 
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
 nnoremap <silent><C-C> :nohl<CR>
 
 " save with sudo
@@ -112,9 +107,9 @@ endif
 
 Bundle 'myusuf3/numbers.vim'
 
-Bundle 'tpope/vim-fugitive'
+" Bundle 'tpope/vim-fugitive'
 
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 
 Bundle 'scrooloose/nerdtree'
 nnoremap <silent><C-n> :NERDTreeToggle<Cr>
@@ -138,14 +133,18 @@ set laststatus=2
 
 Bundle 'bling/vim-bufferline'
 
-" Bundle 'davidhalter/jedi-vim'
-" let g:jedi#use_tabs_not_buffers = 0
+Bundle 'davidhalter/jedi-vim'
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures = "0"
+autocmd FileType python setlocal completeopt-=preview
 
 Bundle 'ivyl/vim-bling'
-" Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ervandew/supertab'
-Bundle 'rstacruz/sparkup'
+" Bundle 'rstacruz/sparkup'
 " Bundle 'scrooloose/syntastic'
+" let g:syntastic_python_flake8_args = "--ignore=E501,W0611,W0401"
+
 " Bundle 'vim-scripts/indentpython.vim'
 Bundle 'klen/python-mode'
 let g:pymode_folding = 0
@@ -154,9 +153,12 @@ let g:pymode_lint_on_fly = 1
 let g:pymode_lint_ignore = "E501,W0611,W0401,"
 let g:pymode_rope_autoimport_import_after_complete = 1
 let g:pymode_doc = 0
-set completeopt=menu
+let g:pymode_motion = 0
+let g:pymode_rope_completion = 0
+let g:pymode_lint_cwindow = 0
+" set completeopt=menu
 
-Bundle 'tpope/vim-vividchalk'
+" Bundle 'tpope/vim-vividchalk'
 Bundle 'tomasr/molokai'
 set background=dark
 colorscheme molokai
