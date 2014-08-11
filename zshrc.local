@@ -35,3 +35,6 @@ fi
 if which xset 2>&1 >/dev/null; then
     xset -b
 fi
+
+# deactivate ctrl+s
+stty -ixon
