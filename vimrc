@@ -161,4 +161,8 @@ let g:pymode_lint_cwindow = 0
 " Bundle 'tpope/vim-vividchalk'
 Bundle 'tomasr/molokai'
 set background=dark
-colorscheme molokai
+try
+    colorscheme molokai
+catch /^Vim\%((\a\+)\)\=:E185/
+    " deal with it
+endtry
