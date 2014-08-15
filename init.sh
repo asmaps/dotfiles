@@ -7,4 +7,4 @@ ln -snf `pwd`/gitconfig ~/.gitconfig
 ln -snf `pwd`/gitignore ~/.gitignore
 
 # set up vim
-vim +BundleInstall! +qall
+#vim +BundleInstall! +qall
