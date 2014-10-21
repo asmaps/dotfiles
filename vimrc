@@ -158,6 +158,9 @@ let g:pymode_rope_completion = 0
 let g:pymode_lint_cwindow = 0
 " set completeopt=menu
 
+" Docker highlighting
+Bundle "ekalinin/Dockerfile.vim"
+
 " Bundle 'tpope/vim-vividchalk'
 Bundle 'tomasr/molokai'
 set background=dark
