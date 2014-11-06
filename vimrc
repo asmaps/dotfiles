@@ -85,6 +85,12 @@ nnoremap <silent><C-C> :nohl<CR>
 " save with sudo
 cmap w!! w !sudo tee %
 
+" syntax highlighting and formatting for markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.md set colorcolumn=120
+autocmd BufNewFile,BufReadPost *.md set tw=120
+autocmd BufNewFile,BufReadPost *.md set formatoptions+=t
+
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
@@ -170,3 +176,6 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
 endtry
+
+" Plugin 'godlygeek/tabular'
+" Plugin 'plasticboy/vim-markdown'
