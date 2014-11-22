@@ -55,19 +55,9 @@ set number
 
 let mapleader = ","
 
-" autoreload vimrc on save
-" autocmd BufWritePost .vimrc source %
-
-" jump to visual lines
-nnoremap j gj
-nnoremap k gk
-
 " stay in visual after indent
 vnoremap < <gv
 vnoremap > >gv
-
-" change Y from yy to y$
-map Y y$
 
 " remove search hl
 nnoremap <silent><C-c> :nohl<CR>
@@ -90,6 +80,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.md set colorcolumn=120
 autocmd BufNewFile,BufReadPost *.md set tw=120
 autocmd BufNewFile,BufReadPost *.md set formatoptions+=t
+
+autocmd BufNewFile,BufReadPost Dockerfile set filetype=dockerfile
+
 
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
@@ -166,7 +159,7 @@ let g:pymode_options_max_line_length = 120
 " set completeopt=menu
 
 " Docker highlighting
-Bundle "ekalinin/Dockerfile.vim"
+Bundle 'docker/docker', {'rtp': 'contrib/syntax/vim'}
 
 " Bundle 'tpope/vim-vividchalk'
 Bundle 'tomasr/molokai'
