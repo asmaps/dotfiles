@@ -83,6 +83,9 @@ autocmd BufNewFile,BufReadPost *.md set formatoptions+=t
 
 autocmd BufNewFile,BufReadPost Dockerfile set filetype=dockerfile
 
+au  BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
+au  BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
+
 
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
@@ -156,6 +159,8 @@ let g:pymode_motion = 0
 let g:pymode_rope_completion = 0
 let g:pymode_lint_cwindow = 0
 let g:pymode_options_max_line_length = 120
+" let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
+let g:pymode_virtualenv = 1
 " set completeopt=menu
 
 " Docker highlighting
@@ -172,3 +177,4 @@ endtry
 
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
+Plugin 'mustache/vim-mustache-handlebars'
