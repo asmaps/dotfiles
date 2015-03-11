@@ -152,7 +152,7 @@ Bundle 'klen/python-mode'
 let g:pymode_folding = 0
 let g:pymode_quickfix_minheight = 1
 let g:pymode_lint_on_fly = 1
-let g:pymode_lint_ignore = "W0611,W0401,"
+let g:pymode_lint_ignore = "W0401,"
 let g:pymode_rope_autoimport_import_after_complete = 1
 let g:pymode_doc = 0
 let g:pymode_motion = 0
