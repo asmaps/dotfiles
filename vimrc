@@ -5,12 +5,8 @@
 set nocompatible " vi compatibility off
 scriptencoding utf-8
 
-"" Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
 "" filetype plugin and syntax
+filetype off
 syntax on
 filetype indent plugin on
 
@@ -86,6 +82,7 @@ autocmd BufNewFile,BufReadPost Dockerfile set filetype=dockerfile
 au  BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
 au  BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
 
+"" Vundle
 
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
@@ -97,6 +94,7 @@ if !filereadable(vundle_readme)
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
     let iCanHazVundle=0
 endif
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
