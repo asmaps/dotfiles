@@ -173,6 +173,8 @@ catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
 endtry
 
+Plugin 'othree/html5.vim'
+
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
 Plugin 'mustache/vim-mustache-handlebars'
