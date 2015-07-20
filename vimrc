@@ -178,3 +178,4 @@ Plugin 'othree/html5.vim'
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
 Plugin 'mustache/vim-mustache-handlebars'
+let g:mustache_abbreviations = 1
