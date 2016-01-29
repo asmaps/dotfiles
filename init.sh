@@ -8,5 +8,8 @@ ln -snf `pwd`/qtile_config.py ~/.config/qtile/config.py
 ln -snf `pwd`/gitconfig ~/.gitconfig
 ln -snf `pwd`/gitignore ~/.gitignore
 
+echo "Installing oh-my-zsh..."
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # set up vim
 #vim +BundleInstall! +qall
