@@ -164,18 +164,8 @@ let g:pymode_virtualenv = 1
 " Docker highlighting
 Bundle 'docker/docker', {'rtp': 'contrib/syntax/vim'}
 
-" Bundle 'tpope/vim-vividchalk'
-Bundle 'tomasr/molokai'
 set background=dark
-try
-    colorscheme molokai
-catch /^Vim\%((\a\+)\)\=:E185/
-    " deal with it
-endtry
+Bundle 'trevorrjohn/vim-obsidian'
+colorscheme obsidian
 
 Plugin 'othree/html5.vim'
-
-" Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
-Plugin 'mustache/vim-mustache-handlebars'
-let g:mustache_abbreviations = 1

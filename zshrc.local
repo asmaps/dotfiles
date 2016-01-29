@@ -1,29 +1,5 @@
 alias dc=docker-compose
 
-if which apt-get 2>&1 >/dev/null; then
-    alias ack=ack-grep
-    if [ -e "/usr/local/bin/virtualenvwrapper.sh" ]; then
-        source /usr/local/bin/virtualenvwrapper.sh
-    fi
-    if [ -e "/etc/bash_completion.d/virtualenvwrapper" ]; then
-        source /etc/bash_completion.d/virtualenvwrapper
-    fi
-    if [ -e "/usr/lib/rbenv/completions/rbenv.zsh" ]; then
-        source /usr/lib/rbenv/completions/rbenv.zsh
-        eval "$(rbenv init -)"
-    fi
-fi
-
-if which pacman 2>&1 >/dev/null; then
-    if [ -e "/usr/bin/virtualenvwrapper.sh" ]; then
-        source /usr/bin/virtualenvwrapper.sh
-    fi
-fi
-
-if [ -e "/home/asmaps/.rvm/scripts/rvm" ]; then
-    source /home/asmaps/.rvm/scripts/rvm
-fi
-
 # autostart tmux
 if [ "$TMUX" = "" ]; then
     export TERM=xterm-256color

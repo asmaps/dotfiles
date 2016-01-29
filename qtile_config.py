@@ -85,7 +85,7 @@ keys = [
     Key([mod], "r", lazy.spawncmd()),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "12345"]
 
 for i in groups:
     # mod1 + letter of group = switch to group
@@ -106,7 +106,7 @@ layouts = [
 
 widget_defaults = dict(
     font='Arial',
-    fontsize=16,
+    fontsize=12,
     padding=3,
 )
 
@@ -117,9 +117,17 @@ screens = [
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.TaskList(),
+                widget.Notify(),
                 widget.ThermalSensor(tag_sensor='Core 0'),
                 widget.ThermalSensor(tag_sensor='temp1'),
+                widget.Sep(),
                 widget.Memory(fmt="{MemAvailable}M"),
+                widget.Sep(),
+                widget.TextBox(text='eth'),
+                widget.Net(interface="enp3s0"),
+                widget.Sep(),
+                widget.TextBox(text='wifi'),
+                widget.Net(interface="wlp5s0"),
                 widget.DF(),
                 widget.Sep(),
                 widget.BatteryIcon(),
@@ -127,10 +135,8 @@ screens = [
                 widget.Sep(),
                 widget.Systray(),
                 widget.Clock(format='%a %d.%m. %H:%M'),
-                widget.Sep(),
-                widget.CurrentLayout(),
             ],
-            30,
+            25,
         ),
     ),
 ]
