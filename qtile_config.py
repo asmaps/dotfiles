@@ -24,9 +24,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
+import subprocess
+
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 
 mod = "mod4"
 
@@ -97,12 +100,13 @@ for i in groups:
 
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=2)
+    layout.Stack(num_stacks=2),
+    layout.zoomy.Zoomy(),
 ]
 
 widget_defaults = dict(
     font='Arial',
-    fontsize=14,
+    fontsize=16,
     padding=3,
 )
 
@@ -112,9 +116,19 @@ screens = [
             [
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.TaskList(),
+                widget.ThermalSensor(tag_sensor='Core 0'),
+                widget.ThermalSensor(tag_sensor='temp1'),
+                widget.Memory(fmt="{MemAvailable}M"),
+                widget.DF(),
+                widget.Sep(),
+                widget.BatteryIcon(),
+                widget.Battery(),
+                widget.Sep(),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Clock(format='%a %d.%m. %H:%M'),
+                widget.Sep(),
+                widget.CurrentLayout(),
             ],
             30,
         ),
@@ -148,3 +162,9 @@ auto_fullscreen = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~')
+    subprocess.call(['feh', '--bg-scale', home + '/Pictures/nywallpaper.jpg'])
