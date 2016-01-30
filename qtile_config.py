@@ -110,6 +110,12 @@ widget_defaults = dict(
     padding=3,
 )
 
+
+def getIp():
+    import requests
+    r = requests.get("http://ipv4.nsupdate.info/myip")
+    return r.text
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -126,6 +132,7 @@ screens = [
             [
                 widget.WindowName(),
                 widget.Notify(),
+                widget.GenPollText(func=getIp),
                 widget.Sep(),
                 widget.ThermalSensor(tag_sensor='Core 0'),
                 widget.ThermalSensor(tag_sensor='temp1'),
