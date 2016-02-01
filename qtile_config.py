@@ -25,13 +25,13 @@
 # SOFTWARE.
 
 import os
-import subprocess
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget
 
 mod = "mod4"
+home = os.path.expanduser('~')
 
 keys = [
     # Switch between windows in current stack pane
@@ -147,6 +147,7 @@ screens = [
                 widget.DF(),
                 widget.Sep(),
                 widget.Battery(),
+                widget.Wallpaper(directory=home + '/Pictures/wallpapers/'),
             ],
             15,
         ),
@@ -180,9 +181,3 @@ auto_fullscreen = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
-
-@hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~')
-    subprocess.call(['feh', '--bg-scale', home + '/Pictures/nywallpaper.jpg'])
