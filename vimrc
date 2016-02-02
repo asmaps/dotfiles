@@ -161,9 +161,6 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_virtualenv = 1
 " set completeopt=menu
 
-" Docker highlighting
-Bundle 'docker/docker', {'rtp': 'contrib/syntax/vim'}
-
 set background=dark
 Bundle 'trevorrjohn/vim-obsidian'
 colorscheme obsidian
