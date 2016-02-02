@@ -5,6 +5,7 @@ ln -snf `pwd`/tmux.conf ~/.tmux.conf
 ln -snf `pwd`/qtile_config.py ~/.config/qtile/config.py
 ln -snf `pwd`/gitconfig ~/.gitconfig
 ln -snf `pwd`/gitignore ~/.gitignore
+ln -snf `pwd`/autolock.sh ~/.autolock.sh
 
 echo "Installing oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

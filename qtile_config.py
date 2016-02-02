@@ -25,10 +25,11 @@
 # SOFTWARE.
 
 import os
+import subprocess
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 
 
 mod = "mod4"
@@ -81,7 +82,7 @@ keys = [
         lazy.layout.toggle_split()
     ),
     Key([mod], "Return", lazy.spawn("terminator")),
-    Key(["control", "mod1"], "l", lazy.spawn("i3lock -c 000000")),
+    Key(["control", "mod1"], "l", lazy.spawn("xautolock -locknow")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
