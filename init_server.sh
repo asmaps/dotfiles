@@ -7,3 +7,8 @@ ln -snf `pwd`/gitconfig ~/.gitconfig
 ln -snf `pwd`/gitignore ~/.gitignore
 # set up vim
 #vim +BundleInstall! +qall
+
+echo "Installing oh-my-zsh..."
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+ln -snf `pwd`/ohmyzshrc ~/.zshrc
