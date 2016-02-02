@@ -31,9 +31,19 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
+
+def run_cmd(cmd):
+    subprocess.call(cmd)
+
+home = os.path.expanduser('~')
 mod = "mod4"
 
 keys = [
+    Key(
+        [mod, "control"], "1",
+        lazy.spawn("sh -c " + home + "/.screenlayout/office.sh"),
+    ),
+
     # Switch between windows in current stack pane
     Key(
         [mod], "k",
@@ -75,6 +85,7 @@ keys = [
         lazy.layout.toggle_split()
     ),
     Key([mod], "Return", lazy.spawn("terminator")),
+    Key(["control", "mod1"], "l", lazy.spawn("i3lock -c 000000")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -83,6 +94,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+    Key([mod], "n", lazy.layout.normalize()),
 ]
 
 groups = [Group(i) for i in "12345"]
@@ -99,9 +111,9 @@ for i in groups:
     )
 
 layouts = [
+    layout.tile.Tile(),
     layout.Max(),
-    layout.Stack(num_stacks=2),
-    layout.zoomy.Zoomy(),
+    layout.floating.Floating(),
 ]
 
 widget_defaults = dict(
@@ -147,10 +159,12 @@ screens = [
                 widget.DF(),
                 widget.Sep(),
                 widget.Battery(),
+                widget.Sep(),
+                widget.CurrentLayout(),
             ],
             15,
         ),
-    ),
+    ) for i in range(3)
 ]
 
 # Drag floating layouts.
@@ -184,5 +198,4 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~')
-    subprocess.call(['feh', '--bg-scale', home + '/Pictures/nywallpaper.jpg'])
+    run_cmd(['feh', '--bg-scale', home + '/Pictures/nywallpaper.jpg'])
