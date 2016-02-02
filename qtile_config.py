@@ -25,18 +25,14 @@
 # SOFTWARE.
 
 import os
-import subprocess
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget
 
 
-def run_cmd(cmd):
-    subprocess.call(cmd)
-
-home = os.path.expanduser('~')
 mod = "mod4"
+home = os.path.expanduser('~')
 
 keys = [
     Key(
@@ -94,7 +90,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
-    Key([mod], "n", lazy.layout.normalize()),
+    Key([mod, "control"], "space", lazy.window.toggle_floating()),
 ]
 
 groups = [Group(i) for i in "12345"]
@@ -136,6 +132,7 @@ screens = [
                 widget.Prompt(),
                 widget.TaskList(),
                 widget.Systray(),
+                widget.Wallpaper(directory=home + '/Pictures/wallpapers/'),
                 widget.Clock(format='%a %d.%m. %H:%M'),
             ],
             25,
@@ -150,12 +147,6 @@ screens = [
                 widget.ThermalSensor(tag_sensor='temp1'),
                 widget.Sep(),
                 widget.Memory(fmt="{MemAvailable}M"),
-                widget.Sep(),
-                widget.TextBox(text='eth'),
-                widget.Net(interface="enp3s0"),
-                widget.Sep(),
-                widget.TextBox(text='wifi'),
-                widget.Net(interface="wlp5s0"),
                 widget.DF(),
                 widget.Sep(),
                 widget.Battery(),
@@ -194,8 +185,3 @@ auto_fullscreen = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
-
-@hook.subscribe.startup_once
-def autostart():
-    run_cmd(['feh', '--bg-scale', home + '/Pictures/nywallpaper.jpg'])
