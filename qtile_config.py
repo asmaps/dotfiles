@@ -86,6 +86,7 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn("terminator")),
     Key(["control", "mod1"], "l", lazy.spawn("xautolock -locknow")),
+    Key([], "XF86AudioMute", lazy.spawn("pavucontrol")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
