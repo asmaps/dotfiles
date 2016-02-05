@@ -125,6 +125,15 @@ def getIp():
     r = requests.get("http://ipv4.nsupdate.info/myip")
     return r.text
 
+
+def getIpv6():
+    import requests
+    try:
+        r = requests.get("http://ipv6.nsupdate.info/myip")
+        return r.text
+    except:
+        return 'No IPv6'
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -142,6 +151,8 @@ screens = [
             [
                 widget.WindowName(),
                 widget.Notify(),
+                widget.GenPollText(func=getIpv6),
+                widget.Sep(),
                 widget.GenPollText(func=getIp),
                 widget.Sep(),
                 widget.ThermalSensor(tag_sensor='Core 0'),
