@@ -25,11 +25,10 @@
 # SOFTWARE.
 
 import os
-import subprocess
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget
 
 
 mod = "mod4"
@@ -38,6 +37,10 @@ home = os.path.expanduser('~')
 keys = [
     Key(
         [mod, "control"], "1",
+        lazy.spawn("sh -c " + home + "/.screenlayout/1screen.sh"),
+    ),
+    Key(
+        [mod, "control"], "2",
         lazy.spawn("sh -c " + home + "/.screenlayout/office.sh"),
     ),
 
