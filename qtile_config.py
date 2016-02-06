@@ -25,10 +25,13 @@
 # SOFTWARE.
 
 import os
+import subprocess
+import re
+import logging
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 
 
 mod = "mod4"
@@ -42,6 +45,10 @@ keys = [
     Key(
         [mod, "control"], "2",
         lazy.spawn("sh -c " + home + "/.screenlayout/office.sh"),
+    ),
+    Key(
+        [mod, "control"], "3",
+        lazy.spawn("sh -c " + home + "/.screenlayout/home.sh"),
     ),
 
     # Switch between windows in current stack pane
@@ -201,3 +208,28 @@ auto_fullscreen = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+def is_running(process):
+    s = subprocess.Popen(["ps", "axuw"], stdout=subprocess.PIPE)
+    if isinstance(process, list):
+        process = process[0]
+
+    for x in s.stdout:
+        if re.search(process.encode(), x):
+            return True
+    return False
+
+
+def execute_once(process):
+    if not is_running(process):
+        logging.getLogger('libqtile').warning('Starting ' + str(process))
+        return subprocess.Popen(process, shell="/bin/bash")
+    else:
+        logging.getLogger('libqtile').warning(str(process) + ' already running. Not starting it')
+
+
+@hook.subscribe.startup
+def startup():
+    execute_once('nm-applet')
+    execute_once('xautolock -detectsleep -time 15 -locker "i3lock -c 000000" & disown'.split())
