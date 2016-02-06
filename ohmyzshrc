@@ -88,3 +88,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias mkvirtualenv3="mkvirtualenv -p `which python3`"
