@@ -94,6 +94,8 @@ keys = [
     Key([mod], "Return", lazy.spawn("terminator")),
     Key(["control", "mod1"], "l", lazy.spawn("xautolock -locknow")),
     Key([], "XF86AudioMute", lazy.spawn("pavucontrol")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
