@@ -90,3 +90,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias mkvirtualenv3="mkvirtualenv -p `which python3`"
+alias dc="docker-compose"
