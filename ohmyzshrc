@@ -53,9 +53,10 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cp dirpersist tmux debian virtualenvwrapper ssh-agent)
+plugins=(tmux virtualenvwrapper ssh-agent extract)
 
 zstyle :omz:plugins:ssh-agent identities id_rsa id_sss
+zstyle ':completion:*' special-dirs true
 
 # User configuration
 
