@@ -10,6 +10,8 @@ filetype off
 syntax on
 filetype indent plugin on
 
+set cryptmethod=blowfish2
+
 "" system
 set enc=utf-8
 set shell=/bin/zsh
