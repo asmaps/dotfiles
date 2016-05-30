@@ -4,6 +4,7 @@ export ZSH_TMUX_FIXTERM=false
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+export LC_ALL=en_US.UTF-8
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +54,7 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux virtualenvwrapper ssh-agent extract)
+plugins=(tmux virtualenvwrapper ssh-agent extract node npm)
 
 zstyle ':completion:*' special-dirs true
 zstyle :omz:plugins:ssh-agent identities id_rsa
