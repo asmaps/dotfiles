@@ -24,6 +24,7 @@ set nostartofline " don't move the coursor to the beginning of the line
 set foldmethod=marker " fold by marker
 set scrolloff=11 " minimum lines to the screens end
 set autochdir " always be in the right directory
+autocmd BufEnter * silent! lcd %:p:h " hack for autochdir
 set pastetoggle=<F12> " toggle paste
 
 "" persistent undo and backup
