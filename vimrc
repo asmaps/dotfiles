@@ -32,6 +32,7 @@ set undofile
 set undodir=~/.backup/
 set backup
 set backupdir=~/.backup/
+set backupcopy=yes
 
 "" tabs and stuff
 set nosmartindent
@@ -78,9 +79,6 @@ autocmd BufNewFile,BufReadPost *.md set tw=120
 autocmd BufNewFile,BufReadPost *.md set formatoptions+=t
 
 autocmd BufNewFile,BufReadPost Dockerfile set filetype=dockerfile
-
-au  BufNewFile,BufRead *.mustache,*.hogan,*.hulk,*.hjs set filetype=html.mustache syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
-au  BufNewFile,BufRead *.handlebars,*.hbs set filetype=html.handlebars syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
 
 "" Vundle
 
@@ -166,3 +164,13 @@ Bundle 'trevorrjohn/vim-obsidian'
 colorscheme obsidian
 
 Plugin 'othree/html5.vim'
+Plugin 'othree/yajs.vim', { 'for': 'html' }
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'vim-scripts/SyntaxComplete'
+Plugin 'pangloss/vim-javascript'
+Plugin 'posva/vim-vue'
+au BufNewFile,BufRead *.vue set filetype=html
+au BufNewFile,BufReadPost *.vue set shiftwidth=2
+au BufNewFile,BufReadPost *.vue set softtabstop=2
+au BufNewFile,BufReadPost *.js set shiftwidth=2
+au BufNewFile,BufReadPost *.js set softtabstop=2

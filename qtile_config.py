@@ -26,10 +26,19 @@
 
 import os
 import subprocess
+import re
+import logging
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
+
+
+def spawn_with_env_lazy(command, env):
+    def spawn_env():
+        subprocess.Popen(command.split(' '), env=env)
+
+    return spawn_env
 
 
 mod = "mod4"
@@ -38,7 +47,19 @@ home = os.path.expanduser('~')
 keys = [
     Key(
         [mod, "control"], "1",
+        lazy.spawn("sh -c " + home + "/.screenlayout/1screen.sh"),
+    ),
+    Key(
+        [mod, "control"], "2",
+        lazy.spawn("sh -c " + home + "/.screenlayout/2screens.sh"),
+    ),
+    Key(
+        [mod, "control"], "3",
         lazy.spawn("sh -c " + home + "/.screenlayout/office.sh"),
+    ),
+    Key(
+        [mod, "control"], "4",
+        lazy.spawn("sh -c " + home + "/.screenlayout/home.sh"),
     ),
 
     # Switch between windows in current stack pane
@@ -83,6 +104,14 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn("terminator")),
     Key(["control", "mod1"], "l", lazy.spawn("xautolock -locknow")),
+    Key([], "XF86AudioMute", lazy.spawn("pavucontrol")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 3")),
+    Key(["shift"], "XF86MonBrightnessUp", lazy.spawn("xbacklight -set 100")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 3")),
+    Key(["shift"], "XF86MonBrightnessDown", lazy.spawn("xbacklight -set 1")),
+    Key([], "XF86LaunchA", lazy.spawn("xinput set-prop 11 \"Device Enabled\" 0")),
+    Key(["shift"], "XF86LaunchA", lazy.spawn("xinput set-prop 11 \"Device Enabled\" 1")),
+    Key(['mod1', "control"], "f", lazy.spawn('/home/ars/start_ff.sh')),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -122,8 +151,20 @@ widget_defaults = dict(
 
 def getIp():
     import requests
-    r = requests.get("http://ipv4.nsupdate.info/myip")
-    return r.text
+    try:
+        r = requests.get("http://ipv4.nsupdate.info/myip")
+        return r.text
+    except:
+        return 'No IPv4'
+
+
+def getIpv6():
+    import requests
+    try:
+        r = requests.get("http://ipv6.nsupdate.info/myip")
+        return r.text
+    except:
+        return 'No IPv6'
 
 screens = [
     Screen(
@@ -141,7 +182,9 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.WindowName(),
-                widget.Notify(),
+                widget.Notify(default_timeout=10),
+                widget.GenPollText(func=getIpv6),
+                widget.Sep(),
                 widget.GenPollText(func=getIp),
                 widget.Sep(),
                 widget.ThermalSensor(tag_sensor='Core 0'),
@@ -186,3 +229,27 @@ auto_fullscreen = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+def is_running(process):
+    s = subprocess.Popen(["ps", "axuw"], stdout=subprocess.PIPE)
+    if isinstance(process, list):
+        process = process[0]
+
+    for x in s.stdout:
+        if re.search(process.encode(), x):
+            return True
+    return False
+
+
+def execute_once(process):
+    if not is_running(process):
+        logging.getLogger('libqtile').warning('Starting ' + str(process))
+        return subprocess.Popen(process)
+    else:
+        logging.getLogger('libqtile').warning(str(process) + ' already running. Not starting it')
+
+
+@hook.subscribe.startup
+def startup():
+    execute_once('nm-applet')
