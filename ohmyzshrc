@@ -57,7 +57,7 @@ ZSH_THEME="gentoo"
 plugins=(tmux dirpersist virtualenvwrapper ssh-agent extract node npm)
 
 zstyle ':completion:*' special-dirs true
-zstyle :omz:plugins:ssh-agent identities id_rsa
+zstyle :omz:plugins:ssh-agent identities id_ed25519
 
 # User configuration
 

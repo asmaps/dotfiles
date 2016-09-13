@@ -81,6 +81,9 @@ autocmd BufNewFile,BufReadPost *.md set formatoptions+=t
 
 autocmd BufNewFile,BufReadPost Dockerfile set filetype=dockerfile
 
+autocmd BufNewFile,BufReadPost *.yml set shiftwidth=2
+autocmd BufNewFile,BufReadPost *.yml set softtabstop=2
+
 "" Vundle
 
 " Setting up Vundle - the vim plugin bundler

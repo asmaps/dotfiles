@@ -55,11 +55,7 @@ keys = [
     ),
     Key(
         [mod, "control"], "3",
-        lazy.spawn("sh -c " + home + "/.screenlayout/office.sh"),
-    ),
-    Key(
-        [mod, "control"], "4",
-        lazy.spawn("sh -c " + home + "/.screenlayout/home.sh"),
+        lazy.spawn("sh -c " + home + "/.screenlayout/3screens.sh"),
     ),
 
     # Switch between windows in current stack pane
@@ -103,7 +99,7 @@ keys = [
         lazy.layout.toggle_split()
     ),
     Key([mod], "Return", lazy.spawn("terminator")),
-    Key(["control", "mod1"], "l", lazy.spawn("xautolock -locknow")),
+    Key(["control", "mod1"], "l", lazy.spawn("i3lock -i /home/asmaps/Pictures/wallpapers/garfield.png")),
     Key([], "XF86AudioMute", lazy.spawn("pavucontrol")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 3")),
     Key(["shift"], "XF86MonBrightnessUp", lazy.spawn("xbacklight -set 100")),
@@ -121,6 +117,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
     Key([mod, "control"], "space", lazy.window.toggle_floating()),
+    Key([], "Print", lazy.spawn("bash /home/asmaps/.take_screenshot.sh")),
 ]
 
 groups = [Group(i) for i in "12345"]
@@ -194,6 +191,7 @@ screens = [
                 widget.DF(),
                 widget.Sep(),
                 widget.Battery(),
+                widget.Battery(battery_name='BAT1'),
                 widget.Sep(),
                 widget.CurrentLayout(),
             ],
