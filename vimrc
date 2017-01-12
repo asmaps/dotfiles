@@ -7,8 +7,6 @@ scriptencoding utf-8
 
 "" filetype plugin and syntax
 filetype off
-syntax on
-filetype indent plugin on
 
 "" system
 set enc=utf-8
@@ -83,6 +81,8 @@ autocmd BufNewFile,BufReadPost Dockerfile set filetype=dockerfile
 
 autocmd BufNewFile,BufReadPost *.yml set shiftwidth=2
 autocmd BufNewFile,BufReadPost *.yml set softtabstop=2
+autocmd BufNewFile,BufReadPost *.ts set shiftwidth=2
+autocmd BufNewFile,BufReadPost *.ts set softtabstop=2
 
 "" Vundle
 
@@ -99,6 +99,8 @@ endif
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+
 Bundle 'gmarik/vundle'
 
 if iCanHazVundle == 0
@@ -127,7 +129,7 @@ let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
 
 Bundle 'saltstack/salt-vim'
-au BufRead,BufNewFile *.sls set filetype=sls
+" au BufRead,BufNewFile *.sls set filetype=sls
 
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -144,8 +146,15 @@ Bundle 'ivyl/vim-bling'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ervandew/supertab'
 " Bundle 'rstacruz/sparkup'
-" Bundle 'scrooloose/syntastic'
-" let g:syntastic_python_flake8_args = "--ignore=E501,W0611,W0401"
+Bundle 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Bundle 'vim-scripts/indentpython.vim'
 Bundle 'klen/python-mode'
@@ -163,9 +172,18 @@ let g:pymode_options_max_line_length = 120
 let g:pymode_virtualenv = 1
 " set completeopt=menu
 
-set background=dark
-Bundle 'trevorrjohn/vim-obsidian'
-colorscheme obsidian
+Plugin 'flazz/vim-colorschemes'
+Plugin 'felixhummel/setcolors.vim'
+colorscheme molokai
+set background=light
+
+
+Plugin 'leafgarland/typescript-vim'
+let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 Plugin 'othree/html5.vim'
 Plugin 'othree/yajs.vim', { 'for': 'html' }
@@ -173,8 +191,11 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'vim-scripts/SyntaxComplete'
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
-au BufNewFile,BufRead *.vue set filetype=html
-au BufNewFile,BufReadPost *.vue set shiftwidth=2
-au BufNewFile,BufReadPost *.vue set softtabstop=2
-au BufNewFile,BufReadPost *.js set shiftwidth=2
-au BufNewFile,BufReadPost *.js set softtabstop=2
+" au BufNewFile,BufRead *.vue set filetype=html
+" au BufNewFile,BufReadPost *.vue set shiftwidth=2
+" au BufNewFile,BufReadPost *.vue set softtabstop=2
+" au BufNewFile,BufReadPost *.js set shiftwidth=2
+" au BufNewFile,BufReadPost *.js set softtabstop=2
+
+syntax on
+filetype plugin indent on
