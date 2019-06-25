@@ -146,7 +146,7 @@ Bundle 'ivyl/vim-bling'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ervandew/supertab'
 " Bundle 'rstacruz/sparkup'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*

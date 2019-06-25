@@ -42,6 +42,7 @@ def spawn_with_env_lazy(command, env):
 
 
 mod = "mod4"
+alt = "mod1"
 home = os.path.expanduser('~')
 
 keys = [
@@ -54,8 +55,16 @@ keys = [
         lazy.spawn("sh -c " + home + "/.screenlayout/2screens.sh"),
     ),
     Key(
+        [mod, "control", "shift"], "2",
+        lazy.spawn("sh -c " + home + "/.screenlayout/2screens_ja.sh"),
+    ),
+    Key(
         [mod, "control"], "3",
         lazy.spawn("sh -c " + home + "/.screenlayout/3screens.sh"),
+    ),
+    Key(
+        [mod, "control", "shift"], "3",
+        lazy.spawn("sh -c " + home + "/.screenlayout/3screens_full.sh"),
     ),
 
     # Switch between windows in current stack pane
@@ -86,6 +95,9 @@ keys = [
         lazy.layout.grow_right()
     ),
 
+    Key([alt], "Tab", lazy.layout.next()),
+    Key([alt, "shift"], "Tab", lazy.layout.previous()),
+
     # Switch window focus to other pane(s) of stack
     Key(
         [mod], "space",
@@ -107,7 +119,7 @@ keys = [
         lazy.layout.toggle_split()
     ),
     Key([mod], "Return", lazy.spawn("terminator")),
-    Key(["control", "mod1"], "l", lazy.spawn("i3lock -i /home/asmaps/Pictures/wallpapers/garfield.png")),
+    Key(["control", "mod1"], "l", lazy.spawn("xscreensaver-command -lock")),
     Key([], "XF86AudioMute", lazy.spawn("pavucontrol")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 3")),
     Key(["shift"], "XF86MonBrightnessUp", lazy.spawn("xbacklight -set 100")),
@@ -115,7 +127,9 @@ keys = [
     Key(["shift"], "XF86MonBrightnessDown", lazy.spawn("xbacklight -set 1")),
     Key([], "XF86LaunchA", lazy.spawn("xinput set-prop 11 \"Device Enabled\" 0")),
     Key(["shift"], "XF86LaunchA", lazy.spawn("xinput set-prop 11 \"Device Enabled\" 1")),
-    Key(['mod1', "control"], "f", lazy.spawn('/home/ars/start_ff.sh')),
+    Key(['mod1', "control"], "p", lazy.spawn('/home/asmaps/pycharm/pycharm.sh')),
+    Key(['mod1', "control"], "o", lazy.spawn('/home/asmaps/git/openclonk/openclonk')),
+    Key(['mod1', "shift", "control"], "o", lazy.spawn('/home/asmaps/openclonk/openclonk --editor')),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -128,7 +142,7 @@ keys = [
     Key([], "Print", lazy.spawn("bash /home/asmaps/.take_screenshot.sh")),
 ]
 
-groups = [Group(i) for i in "12345"]
+groups = [Group(i) for i in "123456789"]
 
 for i in groups:
     # mod1 + letter of group = switch to group
@@ -259,3 +273,5 @@ def execute_once(process):
 @hook.subscribe.startup
 def startup():
     execute_once('nm-applet')
+    execute_once('blueman-applet')
+    execute_once(['xscreensaver', '-nosplash'])
