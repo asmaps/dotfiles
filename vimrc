@@ -115,20 +115,20 @@ Bundle 'myusuf3/numbers.vim'
 
 " Bundle 'kien/ctrlp.vim'
 
-Bundle 'scrooloose/nerdtree'
-nnoremap <silent><C-n> :NERDTreeToggle<Cr>
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeQuitOnOpen=1
+" Bundle 'scrooloose/nerdtree'
+" nnoremap <silent><C-n> :NERDTreeToggle<Cr>
+" let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+" let NERDTreeQuitOnOpen=1
 
 Bundle 'tomtom/tcomment_vim'
 
-Bundle 'vim-scripts/taglist.vim'
-noremap <silent><leader>t :TlistToggle<Cr>
-noremap <silent><C-T> :TlistToggle<Cr>
-let Tlist_Use_Right_Window=1
-let Tlist_GainFocus_On_ToggleOpen = 1
+" Bundle 'vim-scripts/taglist.vim'
+" noremap <silent><leader>t :TlistToggle<Cr>
+" noremap <silent><C-T> :TlistToggle<Cr>
+" let Tlist_Use_Right_Window=1
+" let Tlist_GainFocus_On_ToggleOpen = 1
 
-Bundle 'saltstack/salt-vim'
+" Bundle 'saltstack/salt-vim'
 " au BufRead,BufNewFile *.sls set filetype=sls
 
 Bundle 'bling/vim-airline'
@@ -137,39 +137,39 @@ set laststatus=2
 
 Bundle 'bling/vim-bufferline'
 
-Bundle 'davidhalter/jedi-vim'
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_call_signatures = "0"
-autocmd FileType python setlocal completeopt-=preview
+" Bundle 'davidhalter/jedi-vim'
+" let g:jedi#use_tabs_not_buffers = 0
+" let g:jedi#show_call_signatures = "0"
+" autocmd FileType python setlocal completeopt-=preview
 
-Bundle 'ivyl/vim-bling'
-Bundle 'jmcantrell/vim-virtualenv'
+" Bundle 'ivyl/vim-bling'
+" Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ervandew/supertab'
 " Bundle 'rstacruz/sparkup'
 " Bundle 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " Bundle 'vim-scripts/indentpython.vim'
-Bundle 'klen/python-mode'
-let g:pymode_folding = 0
-let g:pymode_quickfix_minheight = 1
-let g:pymode_lint_on_fly = 1
-let g:pymode_lint_ignore = "W0401,"
-let g:pymode_rope_autoimport_import_after_complete = 1
-let g:pymode_doc = 0
-let g:pymode_motion = 0
-let g:pymode_rope_completion = 0
-let g:pymode_lint_cwindow = 0
-let g:pymode_options_max_line_length = 120
+" Bundle 'klen/python-mode'
+" let g:pymode_folding = 0
+" let g:pymode_quickfix_minheight = 1
+" let g:pymode_lint_on_fly = 1
+" let g:pymode_lint_ignore = "W0401,"
+" let g:pymode_rope_autoimport_import_after_complete = 1
+" let g:pymode_doc = 0
+" let g:pymode_motion = 0
+" let g:pymode_rope_completion = 0
+" let g:pymode_lint_cwindow = 0
+" let g:pymode_options_max_line_length = 120
 " let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
-let g:pymode_virtualenv = 1
+" let g:pymode_virtualenv = 1
 " set completeopt=menu
 
 Plugin 'flazz/vim-colorschemes'
@@ -178,19 +178,19 @@ colorscheme molokai
 set background=light
 
 
-Plugin 'leafgarland/typescript-vim'
-let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi']
+" Plugin 'leafgarland/typescript-vim'
+" let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
+" Plugin 'Shougo/vimproc.vim'
+" Plugin 'Quramy/tsuquyomi'
+" let g:tsuquyomi_disable_quickfix = 1
+" let g:syntastic_typescript_checkers = ['tsuquyomi']
 
-Plugin 'othree/html5.vim'
-Plugin 'othree/yajs.vim', { 'for': 'html' }
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'vim-scripts/SyntaxComplete'
-Plugin 'pangloss/vim-javascript'
-Plugin 'posva/vim-vue'
+" Plugin 'othree/html5.vim'
+" Plugin 'othree/yajs.vim', { 'for': 'html' }
+" Plugin 'othree/javascript-libraries-syntax.vim'
+" Plugin 'vim-scripts/SyntaxComplete'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'posva/vim-vue'
 " au BufNewFile,BufRead *.vue set filetype=html
 " au BufNewFile,BufReadPost *.vue set shiftwidth=2
 " au BufNewFile,BufReadPost *.vue set softtabstop=2

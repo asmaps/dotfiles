@@ -57,7 +57,7 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux dirpersist virtualenvwrapper ssh-agent extract node npm)
+plugins=(tmux dirpersist ssh-agent)
 
 zstyle ':completion:*' special-dirs true
 zstyle :omz:plugins:ssh-agent identities id_ed25519
@@ -65,7 +65,7 @@ zstyle :omz:plugins:ssh-agent identities id_ed25519
 # User configuration
 
 # export PATH="/home/asmaps/bin:/home/asmaps/openclonk:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export PATH=$PATH:/home/asmaps/bin
+export PATH=$PATH:~/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
@@ -105,7 +105,5 @@ alias apa="ansible-playbook ansible/ansible.yml -i ansible/hosts"
 alias apak="ansible-playbook ansible/ansible.yml -i ansible/hosts -K"
 alias aps="ansible-playbook ansible/setup.yml -i ansible/hosts -K"
 alias apau="ansible-playbook ansible/ansible.yml --tags update -i ansible/hosts -K"
-alias ssh-nocare-hostkey="ssh -o PubkeyAuthentication=yes -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-alias ssh-nocare="ssh -o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 stty -ixon
